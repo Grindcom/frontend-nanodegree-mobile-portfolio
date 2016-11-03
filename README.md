@@ -26,6 +26,8 @@ In order to achieve a PageSpeed Insights core of 95 for mobile and 97 for Deskto
 ### Getting Rid of Jank - views/js/main.js and views/pizza.html  
 
 ### Tools Used  
+1. [Compress png files](http://compresspng.com/)  
+
 
 ## Website Performance Optimization portfolio project
 
