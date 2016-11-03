@@ -1,8 +1,25 @@
 # My Additions to the ReadMe
+## Getting Started  
+This App can be  
+1. [seen here](https://grindcom.github.io/frontend-nanodegree-mobile-portfolio/),  
+2. Or you can download all the files to a local folder.  
+3. Or you can clone it using `git clone https://github.com/Grindcom/frontend-nanodegree-mobile-portfolio.git`  
+If you choose to download the files, create a folder and place the repository files and folders in them; keep in mind that your local folder can have any name, but the repository file structure must be the same.
+
+## Critical Rendering Path  
+In order to achieve a PageSpeed Insights core of 95 for mobile and 97 for Desktop I used the following techniques.  
+1. Moved all scripts from the head to below the closing body tag.  
+2. Resized the images linked to in the index file.
+3. Compressed those images.  
+4. Removed the link to google fonts.  
+5. Used a 'defer' in the script for google-analytics.  
+6. Minified style.css and placed it in-line in the index.html file.
 
 ## Tools Used
 1. http://compressjpeg.com/ to compress the related images.
 2. Grunt to resize images.
+2. Minify css with https://cssminifier.com/
+3. Minify html with  https://kangax.github.io/html-minifier/
 
 ## Website Performance Optimization portfolio project
 
