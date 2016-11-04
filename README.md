@@ -24,10 +24,14 @@ In order to achieve a PageSpeed Insights core of 95 for mobile and 97 for Deskto
 3. Minify html with  https://kangax.github.io/html-minifier/
 
 ### Getting Rid of Jank - views/js/main.js and views/pizza.html  
+In order to remove the jank...
+1. Refactor `changePizzaSizes(size)` function.
+2. Reduce the number of moving pizzas created from 200 to around 20.
+3. Change any querySelectorAll function calls to getElementsByClassName;  it was suggested that this is a more efficient method.
 
 ### Tools Used  
 1. [Compress png files](http://compresspng.com/)  
-2. Refactor `changePizzaSizes(size)` function.  
+2.  
 
 ## Website Performance Optimization portfolio project
 
