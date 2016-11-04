@@ -406,13 +406,12 @@ var pizzaElementGenerator = function(i) {
     // Set up Pizza Image Container, add class
     pizzaImageContainer.classList.add("randomPizzaImageContainer");
     pizzaImageContainer.style.width = MEDIUM;
-
     pizzaImage.src = "images/pizza-min.png";
     pizzaImage.classList.add("img-responsive");
+    // Add image to container
     pizzaImageContainer.appendChild(pizzaImage);
     pizzaContainer.appendChild(pizzaImageContainer);
-
-
+    // Set the size of the description container
     pizzaDescriptionContainer.style.width = "65%";
 
     pizzaName = document.createElement("h4");
