@@ -429,62 +429,30 @@ var pizzaElementGenerator = function(i) {
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function(size) {
     window.performance.mark("mark_start_resize"); // User Timing API function
-
-    // Changes the value for the size of the pizza above the slider
-    function changeSliderLabel(size) {
+    // Iterates through pizza elements on the page and changes their widths
+    function changePizzaSizes(size) {
+        var newwidth = SMALL;
+        // Changes the value for the size of the pizza above the slider and return the new size percentage
         switch (size) {
             case "1":
                 document.querySelector("#pizzaSize").innerHTML = "Small";
-                return;
+                // Assignment not necessary
+                // newwidth = SMALL;
+                break;
             case "2":
                 document.querySelector("#pizzaSize").innerHTML = "Medium";
-                return;
+                newwidth = MEDIUM;
+                break;
             case "3":
                 document.querySelector("#pizzaSize").innerHTML = "Large";
-                return;
+                newwidth = LARGE;
+                break;
             default:
-                console.log("bug in changeSliderLabel");
+                console.log("bug in setNewSize");
         }
-    }
-
-    changeSliderLabel(size);
-
-    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
-    // TODO: This could just return a percentage
-    function determineDx(elem, size) {
-        var oldWidth = elem.offsetWidth;
-        var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
-        var oldSize = oldWidth / windowWidth;
-
-        // Changes the slider value to a percent width
-        function sizeSwitcher(size) {
-            switch (size) {
-                case "1":
-                    return 0.25;
-                case "2":
-                    return 0.3333;
-                case "3":
-                    return 0.5;
-                default:
-                    console.log("bug in sizeSwitcher");
-            }
-        }
-        //
-        var newSize = sizeSwitcher(size);
-        var dx = (newSize - oldSize) * windowWidth;
-        //
-        return dx;
-    }
-
-    // Iterates through pizza elements on the page and changes their widths
-    function changePizzaSizes(size) {
         //
         // var randomPizza = document.querySelectorAll(".randomPizzaContainer");
         var randomPizza = document.getElementsByClassName('randomPizzaContainer');
-        // All pizzas are the same size at this point, so get the dx value one time.
-        var dx = determineDx(randomPizza[0], size);
-        //
-        var newwidth = (randomPizza[0].offsetWidth + dx) + 'px';
         //
         for (var i = 0; i < randomPizza.length; i++) {
             randomPizza[i].style.width = newwidth;
@@ -499,11 +467,16 @@ var resizePizzas = function(size) {
     var timeToResize = window.performance.getEntriesByName("measure_pizza_resize");
     console.log("Time to resize pizzas: " + timeToResize[timeToResize.length - 1].duration + "ms");
 };
-
+function proxyFunc(size){
+    // console.log("proxyFunc");
+    requestAnimationFrame(function(){
+        resizePizzas(size)
+    });
+}
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-for (var i = 2; i < 100; i++) {
+for (var i = 0; i < 100; i++) {
     var pizzasDiv = document.getElementById("randomPizzas");
     pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
