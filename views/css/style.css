@@ -39,17 +39,20 @@ form {
 .randomPizzaContainer {
   float: left;
   display: flex;
+
 }
 
 .randomPizzaContainer:after {
   content: "";
   display: table;
   clear:both;
+
 }
 
 .randomPizzaImageContainer{
-  will-change: transform;
+will-change: transform;
 }
+
 
  .container {
   background-color: rgba(240, 60, 60, 0.8);
