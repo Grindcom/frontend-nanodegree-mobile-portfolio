@@ -11,7 +11,7 @@
       <div class="col-md-6">
         <div class="row">
           <div class="col-md-12">
-            <h1>Cam's Pizzeria</h1>
+            <h1>Greg's Pizzeria</h1>
             <div class="row">
               <div id="menu" class="col-md-12">
                 <form action="#randomPizzas">
@@ -98,13 +98,13 @@
           </div>
           <div id="pizzaSize" class="col-md-6">Medium</div>
           <div class="col-md-12">
-            <input id="sizeSlider" type="range" min="1" max="3" value="2" step="1" onchange="resizePizzas(this.value)"></input>
+            <input id="sizeSlider" type="range" min="1" max="3" value="2" step="1" onchange="requestAnimationFrame(resizePizzas(this.value))"></input>
           </div>
         </div>
         <div id="randomPizzas" class="row">
           <div id="pizza0" class="randomPizzaContainer" style="width:33.33%; height: 325px;">
-            <div style="width:35%">
-              <img src="images/pizza.png" class="img-responsive">
+            <div style="width:MEDIUM">
+              <img src="images/pizza-min.png" class="img-responsive">
             </div>
             <div style="width:65%">
               <h4>The Udacity Special</h4>
@@ -120,8 +120,8 @@
             </div>
           </div>
           <div id="pizza1" class="randomPizzaContainer" style="width:33.33%; height: 325px;">
-            <div style="width:35%">
-              <img src="images/pizza.png" class="img-responsive">
+            <div style="width:MEDIUM">
+              <img src="images/pizza-min.png" class="img-responsive">
             </div>
             <div style="width:65%">
               <h4>The Cameron Special</h4>
