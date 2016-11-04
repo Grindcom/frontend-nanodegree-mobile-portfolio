@@ -470,9 +470,9 @@ var resizePizzas = function(size) {
 
     // Iterates through pizza elements on the page and changes their widths
     function changePizzaSizes(size) {
-        console.log("Change Pizza Sizes");
         //
-        var randomPizza = document.querySelectorAll(".randomPizzaContainer");
+        // var randomPizza = document.querySelectorAll(".randomPizzaContainer");
+        var randomPizza = document.getElementsByClassName('randomPizzaContainer');
         // All pizzas are the same size at this point, so get the dx value one time.
         var dx = determineDx(randomPizza[0], size);
         //
@@ -529,8 +529,8 @@ function updatePositions() {
     frame++;
     window.performance.mark("mark_start_frame");
     //
-    var items = document.querySelectorAll('.mover');
-    // var items = document.getElementsByClassName('mover');
+    // var items = document.querySelectorAll('.mover');
+    var items = document.getElementsByClassName('mover');
     //
     var up_scroll_top = document.body.scrollTop;
     // console.log("Scroll top " + up_scroll_top);
@@ -552,14 +552,14 @@ function updatePositions() {
 }
 
 // runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions());
+window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
     var cols = 8;
     var s = 256;
     // Change number of pizzas created from 200
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 32; i++) {
         var elem = document.createElement('img');
         elem.className = 'mover';
         elem.src = "images/pizza-min.png";
