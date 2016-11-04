@@ -558,8 +558,9 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
     var cols = 8;
     var s = 256;
-    // Change number of pizzas created from 200
-    for (var i = 0; i < 32; i++) {
+    // Change number of pizzas created from 200, As page gets
+    //  longer these populate left more than down.
+    for (var i = 0; i < 20; i++) {
         var elem = document.createElement('img');
         elem.className = 'mover';
         elem.src = "images/pizza-min.png";
