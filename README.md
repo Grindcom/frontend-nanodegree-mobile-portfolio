@@ -1,4 +1,4 @@
-# My Additions to the ReadMe
+# My Additions to the Website Performance Optimization Project
 ## Getting Started  
 This App can be  
 1. [seen here](https://grindcom.github.io/frontend-nanodegree-mobile-portfolio/),  
@@ -36,6 +36,7 @@ In order to remove the jank...
 1. [Compress png files](http://compresspng.com/)  
 2. Chrome devtools  
 
+## - Below is the original ReadMe content -
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
