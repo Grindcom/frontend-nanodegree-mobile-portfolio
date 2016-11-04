@@ -22,22 +22,25 @@ In order to achieve a PageSpeed Insights core of 95 for mobile and 97 for Deskto
 2. Grunt to resize images.
 2. Minify css with https://cssminifier.com/
 3. Minify html with  https://kangax.github.io/html-minifier/
+4. Chrome devtools  
 
 ### Getting Rid of Jank - views/js/main.js and views/pizza.html  
 In order to remove the jank...
 1. Refactor `changePizzaSizes(size)` function.
 2. Reduce the number of moving pizzas created from 200 to around 20.
-3. Change any querySelectorAll function calls to getElementsByClassName;  it was suggested that this is a more efficient method.
+3. Change any querySelectorAll function calls to getElementsByClassName;  it was suggested that this is a more efficient method.  
+4. Refactor `resizePizzas(size)` function.  
+5. Use constants for pizza size; SMALL, MEDIUM, LARGE.  
 
 ### Tools Used  
 1. [Compress png files](http://compresspng.com/)  
-2.  
+2. Chrome devtools  
 
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
 
-To get started, check out the repository and inspect the code.
+To get started, check out the repository and inspect the code.  
 
 ### Getting started
 
