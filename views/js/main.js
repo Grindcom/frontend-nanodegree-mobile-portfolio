@@ -378,6 +378,12 @@ var makeRandomPizza = function() {
 
     return pizza;
 };
+//
+// Pizza Image Container Size Constants
+//
+var SMALL = '25%';
+var MEDIUM = '33.3%';
+var LARGE = '50%';
 
 // returns a DOM element for each pizza
 var pizzaElementGenerator = function(i) {
@@ -392,12 +398,14 @@ var pizzaElementGenerator = function(i) {
     pizzaImageContainer = document.createElement("div");
     pizzaImage = document.createElement("img");
     pizzaDescriptionContainer = document.createElement("div");
-
+    // Set up Pizza Containter
     pizzaContainer.classList.add("randomPizzaContainer");
     pizzaContainer.style.width = "33.33%";
     pizzaContainer.style.height = "325px";
     pizzaContainer.id = "pizza" + i; // gives each pizza element a unique id
-    pizzaImageContainer.style.width = "35%";
+    // Set up Pizza Image Container, add class
+    pizzaImageContainer.classList.add("randomPizzaImageContainer");
+    pizzaImageContainer.style.width = MEDIUM;
 
     pizzaImage.src = "images/pizza-min.png";
     pizzaImage.classList.add("img-responsive");
@@ -443,6 +451,7 @@ var resizePizzas = function(size) {
     changeSliderLabel(size);
 
     // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
+    // TODO: This could just return a percentage
     function determineDx(elem, size) {
         var oldWidth = elem.offsetWidth;
         var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
