@@ -27,7 +27,7 @@ In order to achieve a PageSpeed Insights core of 95 for mobile and 97 for Deskto
 
 ### Tools Used  
 1. [Compress png files](http://compresspng.com/)  
-
+2. Refactor `changePizzaSizes(size)` function.  
 
 ## Website Performance Optimization portfolio project
 
