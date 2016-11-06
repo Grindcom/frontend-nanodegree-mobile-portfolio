@@ -15,7 +15,7 @@ Creator:
 Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
 */
-
+'use strict';
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 var pizzaIngredients = {};
@@ -379,9 +379,9 @@ var makeRandomPizza = function() {
     return pizza;
 };
 // Pizza Image Container Size Constants
-var SMALL = '25%';
-var MEDIUM = '33.3%';
-var LARGE = '50%';
+var SMALL = '25%';//CHANGE
+var MEDIUM = '33.3%';//CHANGE
+var LARGE = '50%';//CHANGE
 
 // returns a DOM element for each pizza
 var pizzaElementGenerator = function(i) {
@@ -402,8 +402,8 @@ var pizzaElementGenerator = function(i) {
     pizzaContainer.style.height = "325px";
     pizzaContainer.id = "pizza" + i; // gives each pizza element a unique id
     // Set up Pizza Image Container, add class
-    pizzaImageContainer.style.width = MEDIUM;
-    pizzaImage.src = "images/pizza-min.png";
+    pizzaImageContainer.style.width = MEDIUM;//CHANGE
+    pizzaImage.src = "images/pizza-min.png";//CHANGE
     pizzaImage.classList.add("img-responsive");
     // Add image to container
     pizzaImageContainer.appendChild(pizzaImage);
@@ -427,9 +427,9 @@ var pizzaElementGenerator = function(i) {
 var resizePizzas = function(size) {
     window.performance.mark("mark_start_resize"); // User Timing API function
     // Variable to set the new width of pizzas,
-    var newwidth = SMALL;
+    var newwidth = SMALL;//CHANGE
     // Change the label for the size of the pizza above the slider and the new size percentage
-    switch (size) {
+    switch (size) {//CHANGE
         case "1":
         document.querySelector("#pizzaSize").innerHTML = "Small";
         // Assignment not necessary, newwidth is initialized to SMALL
@@ -446,9 +446,11 @@ var resizePizzas = function(size) {
         console.log("bug in setNewSize");
     }
     // Get an array of all randomPizzaContainer's
-    var randomPizza = document.getElementsByClassName('randomPizzaContainer');
+    var randomPizza = document.getElementsByClassName('randomPizzaContainer');//CHANGE
+    // Change suggested by reviewer, get array length one time.
+    var arrLength = randomPizza.length//CHANGE
     // Set each one to the new width
-    for (var i = 0; i < randomPizza.length; i++) {
+    for (var i = 0; i < arrLength; i++) {//CHANGE
         randomPizza[i].style.width = newwidth;
     }
     // User Timing API is awesome
@@ -459,10 +461,12 @@ var resizePizzas = function(size) {
 };
 
 window.performance.mark("mark_start_generating"); // collect timing data
-
+// Moved here at the recommendation of the reviewer, however please refer to this
+// article http://stackoverflow.com/questions/3684923/javascript-variables-declare-outside-or-inside-loop
+//  indicating there is no fundamental difference in the placement of a var inside or outside a loop.  With that in mind, it is my opinion that if a variable is only intended to be used in a single place, that is where it should be declared.
+var pizzasDiv = document.getElementById("randomPizzas");
 // This for-loop actually creates and appends all of the pizzas when the page loads
 for (var i = 0; i < 100; i++) {
-    var pizzasDiv = document.getElementById("randomPizzas");
     pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -495,14 +499,15 @@ function updatePositions() {
     frame++;
     window.performance.mark("mark_start_frame");
     //
-    var items = document.getElementsByClassName('mover');
+    var items = document.getElementsByClassName('mover');//CHANGE
     //
-    var up_scroll_top = document.body.scrollTop;
-    var coeficient = up_scroll_top / 1250;
-    //
-    for (var i = 0; i < items.length; i++) {
+    var up_scroll_top = document.body.scrollTop;//CHANGE
+    var coeficient = up_scroll_top / 1250;//CHANGE
+    // Moved at suggestion of reviewer.
+    // Include arrLength and phase in initalize list at suggestion of reviewer.
+    for (var i = 0, arrLength = items.length, phase; i < arrLength; i++) {//CHANGE
         // could use a 5 number selection here instead.
-        var phase = Math.sin(coeficient + (i % 5));
+        phase = Math.sin(coeficient + (i % 5));
         items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
     }
 
@@ -521,19 +526,25 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-    var cols = 8;
-    var s = 256;
+    var cols = 8;//Columns
+    var s = 256;//Spacing
+    var totalRows = Math.floor(window.screen.height/100);//CHANGE // screen height divide by pizza image height
+    var totalPizzas = cols * totalRows;
+    // Changes suggeted by reviewer;
+    var movingPizzas = document.querySelector("#movingPizzas1");//CHANGE
     // Change number of pizzas created from 200, Note: As page gets
     //  longer these populate left more than down.
-    for (var i = 0; i < 20; i++) {
-        var elem = document.createElement('img');
+    //  Moved elem declaration (suggested by reviewer)
+    for (var i = 0, elem; i < totalPizzas; i++) {
+        elem = document.createElement('img');//CHANGE
         elem.className = 'mover';
-        elem.src = "images/pizza-min.png";
+        elem.src = "images/pizza-min.png";//CHANGE
         elem.style.height = "100px";
         elem.style.width = "73.333px";
         elem.basicLeft = (i % cols) * s;
         elem.style.top = (Math.floor(i / cols) * s) + 'px';
-        document.querySelector("#movingPizzas1").appendChild(elem);
+        movingPizzas.appendChild(elem);//CHANGE
     }
+    // CHANGE
     requestAnimationFrame(updatePositions);
 });
